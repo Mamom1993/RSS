@@ -6,7 +6,6 @@
   <thead>
     <tr>
       <th>Link</th>
-      <th>User</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -15,7 +14,6 @@
     <% @feeds.each do |feed| %>
       <tr>
         <td><%= feed.link %></td>
-        <td><%= feed.user_id %></td>
         <td><%= link_to 'Show', feed %></td>
         <td><%= link_to 'Edit', edit_feed_path(feed) %></td>
         <td><%= link_to 'Destroy', feed, method: :delete, data: { confirm: 'Are you sure?' } %></td>

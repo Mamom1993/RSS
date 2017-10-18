@@ -5,6 +5,7 @@ require 'rss'
 require 'open-uri'
 
 class FeedsController < ApplicationController
+  before_action :authenticate_user!, except: [:index, :show]
   before_action :set_feed, only: [:show, :edit, :update, :destroy]
 
   # GET /feeds
@@ -80,6 +81,6 @@ class FeedsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def feed_params
-      params.require(:feed).permit(:link, :user_id)
+      params.require(:feed).permit(:link)
     end
 end
