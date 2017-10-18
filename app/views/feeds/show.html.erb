@@ -1,0 +1,22 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Link:</strong>
+  <%= @feed.link %>
+</p>
+
+<p>
+  <strong>User:</strong>
+  <%= @feed.user_id %>
+</p>
+
+<%= link_to 'Edit', edit_feed_path(@feed) %> |
+<%= link_to 'Back', feeds_path %>
+
+<% @links.items.each do |item| %>
+      <div style="padding-bottom: 30px;">
+        <h2><%= link_to item.title, item.link %></h2>
+        <p><%= item.description.html_safe %></p>
+      </div>
+    <% end %>
+

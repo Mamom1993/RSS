@@ -1,9 +1,10 @@
 Rails.application.routes.draw do
 
+  resources :feeds
   devise_for :users
-  get 'news/index'
+  get 'news/show'
 
-  root 'news#index'
+  root 'news#show'
 
 
 end

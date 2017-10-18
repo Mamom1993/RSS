@@ -8,7 +8,7 @@ class NewsController < ApplicationController
 
 
 
-def index
+def show
   url = 'http://ivansamoilik.ru/blog/rss/'
   open(url) do |rss|
     @feed = RSS::Parser.parse(rss)
