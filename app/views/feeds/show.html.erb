@@ -1,4 +1,5 @@
 <p id="notice"><%= notice %></p>
+<% if current_user.id == @feed.user_id %>
 
 <p>
   <strong>Link:</strong>
@@ -9,10 +10,14 @@
 <%= link_to 'Edit', edit_feed_path(@feed) %> |
 <%= link_to 'Back', feeds_path %>
 
-<% @links.items.each do |item| %>
+    <% @links.items.each do |item| %>
       <div style="padding-bottom: 30px;">
         <h2><%= link_to item.title, item.link %></h2>
         <p><%= item.description.html_safe %></p>
       </div>
     <% end %>
 
+<% else %>
+
+  <% controller.redirect_to feeds_path %>
+<% end %>

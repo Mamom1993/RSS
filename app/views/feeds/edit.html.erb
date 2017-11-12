@@ -1,6 +1,15 @@
 <h1>Editing Feed</h1>
+<% if current_user.id == @feed.user_id %>
 
-<%= render 'form', feed: @feed %>
+  <%= render 'form', feed: @feed %>
 
-<%= link_to 'Show', @feed %> |
-<%= link_to 'Back', feeds_path %>
+  <%= link_to 'Show', @feed %> |
+  <%= link_to 'Back', feeds_path %>
+
+
+<% else %>
+
+  <% controller.redirect_to feeds_path %>
+
+
+<% end %>
