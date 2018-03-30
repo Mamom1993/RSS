@@ -1,23 +1,41 @@
+<% @title = "Reader: " + @links.channel.title %>
+
+<div class="row">
+  <div class="col-lg-9">
+
 <p id="notice"><%= notice %></p>
 <% if current_user.id == @feed.user_id %>
 
-<p>
-  <strong>Link:</strong>
-  <%= @feed.link %>
-</p>
 
 
+  <p class="post-content__name"><%= @links.channel.title %></p>
+
+  <p>
+    <strong>Link:</strong>
+    <a href="<%= @feed.link %>"><%= @feed.link %></a>
+  </p>
+
+
+<!--
 <%= link_to 'Edit', edit_feed_path(@feed) %> |
-<%= link_to 'Back', feeds_path %>
+<%= link_to 'Back', feeds_path %> -->
+
+  <div class="row">
+    <div class="col-lg-12 post-content">
 
     <% @links.items.each do |item| %>
       <div style="padding-bottom: 30px;">
-        <h2><%= link_to item.title, item.link %></h2>
+        <h1 class="post-content"><%= link_to item.title, item.link %></h1>
         <p><%= item.description.html_safe %></p>
+        <p class="post-content__date">Date: <%= item.pubDate %></p>
       </div>
     <% end %>
+    <% else %>
+      <% controller.redirect_to feeds_path %>
+    <% end %>
+      </div>
+    </div>
 
-<% else %>
 
-  <% controller.redirect_to feeds_path %>
-<% end %>
+  </div>
+</div>

@@ -1,7 +1,9 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>RSS</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title><%= @title || "Reader" %></title>
     <%= csrf_meta_tags %>
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
@@ -12,21 +14,23 @@
  </style>
 
 
-  <body style="padding-top: 50px;max-width: 700px;margin: 0 auto;">
-    <%= link_to "Feeds all", feeds_path, {:style=>'margin-right: 50px;'} %>
+  <body>
+    <div class="container">
+        <%= link_to "Feeds all", feeds_path, {:style=>'margin-right: 50px;'} %>
 
-    <% if user_signed_in? %>
+        <% if user_signed_in? %>
 
-      <%= link_to "Выход", destroy_user_session_path, method: :delete %>
-    <% else %>
-      <%= link_to "Вход", new_user_session_path %>
-      <%= link_to "Регистрация", new_user_registration_path %>
-    <% end %>
+          <%= link_to "Выход", destroy_user_session_path, method: :delete %>
+        <% else %>
+          <%= link_to "Вход", new_user_session_path %>
+          <%= link_to "Регистрация", new_user_registration_path %>
+        <% end %>
 
-    <p class="notice"><%= notice %></p>
-    <p class="alert"><%= alert %></p>
+        <p class="notice"><%= notice %></p>
+        <p class="alert"><%= alert %></p>
 
 
-    <%= yield %>
+        <%= yield %>
+    </div>
   </body>
 </html>
